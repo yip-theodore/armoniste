@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="14px" height="13px" viewBox="0 0 14 13" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 50.2 (55047) - http://www.bohemiancoding.com/sketch -->
+    <title>icon</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="sideR/closeHover" transform="translate(-18.000000, -31.000000)" fill="#9B9B9B">
+            <g id="icon" transform="translate(18.000000, 30.000000)">
+                <rect id="Rectangle-3-Copy" transform="translate(7.000000, 7.500000) rotate(-315.000000) translate(-7.000000, -7.500000) " x="-1.75" y="7" width="17.5" height="1"></rect>
+                <rect id="Rectangle-3-Copy" transform="translate(7.000000, 7.500000) rotate(-45.000000) translate(-7.000000, -7.500000) " x="-1.75" y="7" width="17.5" height="1"></rect>
+            </g>
+        </g>
+    </g>
+</svg>
