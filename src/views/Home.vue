@@ -1,17 +1,21 @@
 <template>
   <div class="Home">
     <Main
+      v-if="!loading && loading !== 0"
       :page-data="pageData"
     />
     <Side
+      v-if="!loading && loading !== 0"
       :page-data="pageData"
     />
+    <Loading :loading="loading" />
   </div>
 </template>
 
 <script>
 import Main from '@/components/Main'
 import Side from '@/components/Side'
+import Loading from '../components/Loading'
 
 import { data } from '@/data.js'
 import { store } from '../store.js'
@@ -22,25 +26,17 @@ export default {
   name: 'home',
   components: {
     Main,
-    Side
+    Side,
+    Loading
   },
   data: function () {
     return {
-      sharedState: store.state
+      sharedState: store.state,
+      loading: 0
     }
   },
   created: function () {
     
-    const video = document.createElement('video')
-    const videoLoadedInterval = window.setInterval(() => {
-      if (video.readyState === 4) {
-        loadedCount += 1
-        console.log(loadedCount, video.src)
-        window.clearInterval(videoLoadedInterval)
-      }
-    }, 200)
-    video.src = require('../assets/' + 'background_about.mp4').replace('https://yip-theodore.github.io/', 'https://yip-theodore.github.io/armoniste/')
-
     const images = [
       'bottle_cotes_du_rhone_red_wine.png',
       'bottle_cotes_du_rhone_white_wine.png',
@@ -65,15 +61,35 @@ export default {
 
     images.forEach(image => {
       const img = document.createElement('img')
-      img.onload = function () {
+      img.onload = () => {
         loadedCount += 1
-        console.log(loadedCount, image)
+        // console.log(loadedCount, image)
+        this.loading = Math.round(loadedCount / (images.length + 1) * 100)
+        // console.log(this.loading)
       }
-      img.onerror = function () {
+      img.onerror = () => {
         console.log('error', image)
       }
-      img.src = require('../assets/' + image).replace('https://yip-theodore.github.io/', 'https://yip-theodore.github.io/armoniste/')
+      img.src = require('../assets/' + image)
     })
+
+
+    const video = document.createElement('video')
+    const videoLoadedInterval = window.setInterval(() => {
+      if (video.readyState === 4) {
+        loadedCount += 1
+        // console.log(loadedCount, video.src)
+        this.loading = Math.round(loadedCount / (images.length + 1) * 100)
+        window.setTimeout(() => {
+          this.loading = -1
+          window.setTimeout(() => {
+            this.loading = false
+          }, 1000)
+        }, 100)
+        window.clearInterval(videoLoadedInterval)
+      }
+    }, 200)
+    video.src = require('../assets/' + 'background_aboute.mp4')
 
     window.addEventListener('keydown', throttle(this.changePageOnKeydown, 1500, { trailing: false }))
     window.addEventListener('wheel', throttle(this.changePageOnScroll, 1500, { trailing: false }))
@@ -81,11 +97,11 @@ export default {
   methods: {
     changePageOnScroll: function(e) {
       if (e.deltaY > 0) {
-        if (this.page +1 === data.length) return
+        if (this.sharedState.currentPage === data.length-1) return
         this.page += 1
         store.setPage(this.sharedState.currentPage+1)
       } else {
-        if (this.page - 1 === -1) return
+        if (this.sharedState.currentPage === 0) return
         this.page -= 1
         store.setPage(this.sharedState.currentPage-1)
       }
@@ -93,12 +109,12 @@ export default {
     changePageOnKeydown: function(e) {
       switch (e.which) {
         case 40: // down
-          if (this.page +1 === data.length) return
+          if (this.sharedState.currentPage === data.length-1) return
           this.page += 1
           store.setPage(this.sharedState.currentPage+1)
           break;
         case 38: // up
-          if (this.page - 1 === -1) return
+          if (this.sharedState.currentPage === 0) return
           this.page -= 1
           store.setPage(this.sharedState.currentPage-1)
 
@@ -108,12 +124,19 @@ export default {
   computed: {
     pageData: function () {
       return data[this.sharedState.currentPage]
+    },
+    menuOpen: function () {
+      return this.sharedState.menuOpen
     }
   }
 }
 </script>
 
 <style lang="scss">
+body {
+  background-color: #FBFBFB;
+}
+
 .Home {
   display: flex;
   overflow: hidden;

@@ -15,6 +15,9 @@ import Velocity from 'velocity-animate'
 
 export default {
   name: 'Transition2Wrapper',
+  props: {
+    enterDelay: [Number, Boolean]
+  },
   methods: {
     beforeEnter: function (el) {
       el.style.opacity = 0
@@ -28,7 +31,7 @@ export default {
           { transform: ['translateY(0)', 'translateY(10px)'], opacity: 1 },
           { duration: 300, delay: 1000, easing: 'ease-out', complete: done }
         )
-      }, delay)
+      }, this.enterDelay ? this.enterDelay + delay : delay)
     },
     leave: function (el, done) {
       Velocity(
@@ -38,6 +41,5 @@ export default {
       )
     }
   }
-
 }
 </script>

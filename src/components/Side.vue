@@ -8,8 +8,9 @@
       :info="pageData.info"
       :is-landing-page="pageData.page === 1"
     />
-    <!-- <SideSidebar
-    /> -->
+    
+    <SideSidebar
+    />
   </article>
 </template>
 

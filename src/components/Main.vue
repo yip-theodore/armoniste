@@ -14,6 +14,7 @@
       :award="pageData.award"
       :is-overlay="pageData.category === 'About'"
     />
+    <MainMenuBackground />
   </main>
 </template>
 
@@ -21,13 +22,15 @@
 import MainBackground from '@/components/MainBackground'
 import MainSidebar from '@/components/MainSidebar'
 import MainContent from '@/components/MainContent'
+import MainMenuBackground from './MainMenuBackground'
 
 export default {
   name: 'Main',
   components: {
     MainBackground,
     MainSidebar,
-    MainContent
+    MainContent,
+    MainMenuBackground
   },
   props: {
     pageData: Object

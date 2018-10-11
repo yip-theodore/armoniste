@@ -8,7 +8,7 @@
       >
         {{ name }}
       </h3>
-      <Transtion2Wrapper>
+      <Transtion2Wrapper :enter-delay="category === 'About' && 400">
         <p
           v-if="description"
           v-for="(paragraph, i) in description"
@@ -25,7 +25,7 @@
           v-if="award"
           class="side__content__text__award"
           :key="award.name"
-          :data-index="description.length"
+          :data-index="description.length-1"
         >
           {{ award.type }} - {{ award.name }}
         </p>
@@ -35,19 +35,44 @@
 </template>
 
 <script>
+import { data } from '../data.js'
+import { store } from '../store.js'
+
 import Transtion2Wrapper from './Transition2Wrapper'
 
 export default {
   name: 'SideContentText',
-  props: {
-    name: String,
-    description: [String, Array],
-    color: String,
-    award: Object
+  data: function () {
+    return {
+      sharedState: store.state
+    }
   },
+  // props: {
+  //   name: String,
+  //   description: [String, Array],
+  //   color: String,
+  //   award: Object
+  // },
   components: {
     Transtion2Wrapper
-  }
+  },
+  computed: {
+    name: function () {
+      return data[this.sharedState.currentPage].name
+    },
+    description: function () {
+      return data[this.sharedState.currentPage].description
+    },
+    color: function () {
+      return data[this.sharedState.currentPage].color
+    },
+    award: function () {
+      return data[this.sharedState.currentPage].award
+    },
+    category: function () {
+      return data[this.sharedState.currentPage].category
+    }
+  },
 }
 </script>
 

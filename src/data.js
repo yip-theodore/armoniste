@@ -21,10 +21,10 @@ export const data = [
   //     }
   //   ]
   // },
-  {
-    page: 0,
-    loading: true
-  },
+  // {
+  //   page: 0,
+  //   loading: true
+  // },
   {
     page: 1,
     category: 'About',
@@ -34,7 +34,7 @@ export const data = [
       'Inspired by passionate producers, all handmade products specifically selected for you are the fruit of the work of French artisans, proud of the quality of their products.',
       'Armoniste Team is a bunch of people, passionate about life, and devoted to sharing the belief that every moment we have is a gift to be enjoyed.'
     ],
-    background: 'background_about.mp4'
+    background: 'background_aboute.mp4'
   },
   {
     page: 2,

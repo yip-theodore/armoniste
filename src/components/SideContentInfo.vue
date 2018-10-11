@@ -66,7 +66,7 @@ export default {
           }
           &__text {
             font-size: 12px;
-            font-weight: 200;
+            // font-weight: 200;
           }
           &__labels {
             align-self: center;

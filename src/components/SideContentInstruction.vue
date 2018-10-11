@@ -1,5 +1,5 @@
 <template>
-  <div class="side__content__instruction">
+  <div class="side__content__instruction" v-if="!menuOpen">
     <TransitionWrapper
       vertical
       :enter-delay="1600"
@@ -50,6 +50,9 @@ export default {
   computed: {
     page: function () {
       return data[this.sharedState.currentPage].page
+    },
+    menuOpen: function () {
+      return this.sharedState.menuOpen
     }
   }
 }

@@ -12,7 +12,7 @@
         class="main__background__content__item main__background__content__item--video"
         :class="{ 'main__background__content__item--inverted': isInverted }"
         :src="require(`../assets/${background}`)"
-        autoplay muted
+        autoplay muted loop
         :key="background"
       ></video>
       <img

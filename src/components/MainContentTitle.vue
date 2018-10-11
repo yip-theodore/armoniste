@@ -13,6 +13,7 @@
         mode="out-in"
       >
         <h2
+          v-if="title"
           class="main__content__title__box__item"
           :key="title.join()"
           :data-index="i"

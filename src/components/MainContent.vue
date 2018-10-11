@@ -7,7 +7,6 @@
       :award="award"
     />
     <MainContentTitle
-      v-if="title"
       :title="title"
     />
   </div>
