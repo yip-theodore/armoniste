@@ -154,7 +154,7 @@ export default {
         background-color: white;
       }
       &:disabled {
-        cursor: not-allowed;
+        cursor: auto;
         img {
           filter: brightness(1.4);
         }
@@ -169,7 +169,38 @@ export default {
           filter: brightness(3);
         }
       }
+      &:hover:not(:disabled) {
+        img {
+          filter: brightness(0.6);
+          animation: prev 0.5s ease-out;
+        }
+      }
     }
+    &__next {
+      &:hover:not(:disabled) {
+        img {
+          filter: brightness(0.6);
+          animation: next 0.5s ease-out;
+        }
+      }
+    }
+  }
+}
+
+@keyframes prev {
+  0%, 100% {
+    transform: translateX(0) rotate(180deg);
+  }
+  50% {
+    transform: translateX(-2px) rotate(180deg);
+  }
+}
+@keyframes next {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(2px);
   }
 }
 </style>

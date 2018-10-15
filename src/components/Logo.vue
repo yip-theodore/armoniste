@@ -33,7 +33,7 @@ export default {
         filter: brightness(3);
       }
       &--dark {
-        filter: brightness(0.6);
+        filter: brightness(0.7);
       }
       &--large {
         width: 200px;

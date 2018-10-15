@@ -30,11 +30,11 @@ export const data = [
     category: 'About',
     title: ['Organic', 'French', 'Wines'],
     description: [
-      'A selection of Organic and Natural products selected for their high quality, their authentic flavour, their beneficial effects, and their uniqueness.',
-      'Inspired by passionate producers, all handmade products specifically selected for you are the fruit of the work of French artisans, proud of the quality of their products.',
+      'A collection of Organic and Natural products selected for their high quality, their authentic flavour, their beneficial effects, and their uniqueness.',
+      'Inspired by passionate producers, all handmade products specifically picked for you are the fruit of the work of French artisans, proud of the quality of their products.',
       'Armoniste Team is a bunch of people, passionate about life, and devoted to sharing the belief that every moment we have is a gift to be enjoyed.'
     ],
-    background: 'background_aboute.mp4'
+    background: 'background_about.mp4'
   },
   {
     page: 2,
@@ -146,7 +146,7 @@ export const data = [
       virtues: [
         'Promote longevity',
         'Enhance cerebral circulation and memory',
-        'Exhilarating (feeling of well being)'
+        'Feeling of well being'
       ],
       alcohol: '12%',
       serving: '15°C',
