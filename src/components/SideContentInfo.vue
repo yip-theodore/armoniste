@@ -19,7 +19,15 @@
             <span v-for="info2 in value" :key="info2" v-if="info2.substring(info2.length - 3) !== 'svg'">
               {{ info2 }}<br>
             </span>
-            <img v-if="info2.substring(info2.length - 3) === 'svg'" v-for="info2 in value" :key="info2" :src="require(`../assets/${info2}`)" alt="" class="side__content__table__row__column__labels__item">
+            <img
+              v-if="info2.substring(info2.length - 3) === 'svg'"
+              v-for="info2 in value"
+              :key="info2"
+              :src="require(`../assets/${info2}`)"
+              alt=""
+              class="side__content__table__row__column__labels__item"
+              :title="info2.replace('.svg', '').replace('label_', ' ')"
+            >
           </div>
         </td>
       </tr>

@@ -50,12 +50,12 @@ export default {
       'background_flaveur_basilic_grand_vert.jpg',
       'background_flaveur_basilic_sacre.jpg',
       'background_flaveur_lavande.jpg',
-      'contacte.jpg',
-      'label_vigneron_independant.svg',
-      'label_qualite_france.svg',
-      'labele_ab.svg',
-      'label_aoc.svg',
-      'label_ecocert.svg'
+      'contact.jpg',
+      'label_Vignerons Indépendants.svg',
+      'label_Qualité France.svg',
+      'label_Agriculture biologique.svg',
+      'label_Appellation d\'origine contrôlée.svg',
+      'label_Ecocert.svg'
     ]
     let loadedCount = 0
 
@@ -63,9 +63,9 @@ export default {
       const img = document.createElement('img')
       img.onload = () => {
         loadedCount += 1
-        // console.log(loadedCount, image)
         this.loading = Math.round(loadedCount / (images.length + 1) * 100)
-        // console.log(this.loading)
+        // console.log(loadedCount, this.loading, image)
+        this.loading === 100 && this.endLoadingState()
       }
       img.onerror = () => {
         console.log('error', image)
@@ -78,18 +78,13 @@ export default {
     const videoLoadedInterval = window.setInterval(() => {
       if (video.readyState === 4) {
         loadedCount += 1
-        // console.log(loadedCount, video.src)
         this.loading = Math.round(loadedCount / (images.length + 1) * 100)
-        window.setTimeout(() => {
-          this.loading = -1
-          window.setTimeout(() => {
-            this.loading = false
-          }, 1000)
-        }, 100)
+        // console.log(loadedCount, this.loading, video.src)
+        this.loading === 100 && this.endLoadingState()
         window.clearInterval(videoLoadedInterval)
       }
     }, 200)
-    video.src = require('../assets/' + 'background_aboute.mp4')
+    video.src = require('../assets/' + 'background_about.mp4')
 
     window.addEventListener('keydown', throttle(this.changePageOnKeydown, 1500, { trailing: false }))
     window.addEventListener('wheel', throttle(this.changePageOnScroll, 1500, { trailing: false }))
@@ -108,17 +103,27 @@ export default {
     },
     changePageOnKeydown: function(e) {
       switch (e.which) {
+        case 39: // right
         case 40: // down
           if (this.sharedState.currentPage === data.length-1) return
           this.page += 1
           store.setPage(this.sharedState.currentPage+1)
           break;
+        case 37: // left
         case 38: // up
           if (this.sharedState.currentPage === 0) return
           this.page -= 1
           store.setPage(this.sharedState.currentPage-1)
 
       }
+    },
+    endLoadingState: function () {
+      window.setTimeout(() => {
+        this.loading = -1
+        window.setTimeout(() => {
+          this.loading = false
+        }, 1000)
+      }, 200)
     }
   },
   computed: {

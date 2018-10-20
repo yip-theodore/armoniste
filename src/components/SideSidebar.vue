@@ -20,6 +20,7 @@
       @click="previous"
       :disabled="sharedState.currentPage === 0"
       class="side__sidebar__previous"
+      title="Previous"
     >
       <img src="../assets/arrow.svg" alt="" class="side__sidebar__previous__icon">
     </button>
@@ -27,8 +28,17 @@
       @click="next"
       :disabled="sharedState.currentPage === pageMax"
       class="side__sidebar__next"
+      title="Next"
     >
       <img src="../assets/arrow.svg" alt="" class="side__sidebar__next__icon">
+    </button>
+    <button
+      @click="contact"
+      :disabled="sharedState.currentPage === pageMax"
+      class="side__sidebar__contact"
+      title="Contact"
+    >
+      <img src="../assets/envelop.svg" alt="" class="side__sidebar__next__icon">
     </button>
   </div>
 </template>
@@ -63,7 +73,10 @@ export default {
       }, 1500, { trailing: false }),
     toggleMenu: function () {
       store.toggleMenu()
-    }
+    },
+    contact: throttle(function () {
+      store.setPage(data.length - 1)
+    }, 1500, { trailing: false }),
   },
   computed: {
     pageMax: function () {
@@ -137,7 +150,8 @@ export default {
       }
     }
     &__previous,
-    &__next {
+    &__next,
+    &__contact {
       outline: none;
       flex-shrink: 0;
       align-self: flex-end;
@@ -184,6 +198,16 @@ export default {
         }
       }
     }
+    &__contact {
+      height: auto;
+      padding: 20px 0;
+      &:hover:not(:disabled) {
+        img {
+          filter: brightness(0.6);
+          animation: contact 0.5s ease-out;
+        }
+      }
+    }
   }
 }
 
@@ -201,6 +225,14 @@ export default {
   }
   50% {
     transform: translateX(2px);
+  }
+}
+@keyframes contact {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-2px);
   }
 }
 </style>

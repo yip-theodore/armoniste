@@ -55,10 +55,10 @@ export const data = [
       serving: '16-18°C',
       pairing: 'Poultry, animal game, mushrooms or truffles',
       certificates: [
-        'label_vigneron_independant.svg',
-        'label_qualite_france.svg',
-        'labele_ab.svg',
-        'label_aoc.svg'
+        'label_Vignerons Indépendants.svg',
+        'label_Qualité France.svg',
+        'label_Agriculture biologique.svg',
+        'label_Appellation d\'origine contrôlée.svg'
       ]
     }
   },
@@ -81,10 +81,10 @@ export const data = [
       serving: '12°C',
       pairing: 'Fish, shellfish, delicatessen, salad and goat cheese',
       certificates: [
-        'label_vigneron_independant.svg',
-        'label_qualite_france.svg',
-        'labele_ab.svg',
-        'label_aoc.svg'
+        'label_Vignerons Indépendants.svg',
+        'label_Qualité France.svg',
+        'label_Agriculture biologique.svg',
+        'label_Appellation d\'origine contrôlée.svg'
       ]
     }
   },
@@ -106,7 +106,7 @@ export const data = [
       serving: '8°C',
       pairing: 'Aperitifs, fruit salad or ice-cream',
       certificates: [
-        'label_ecocert.svg'
+        'label_Ecocert.svg'
       ]
     }
   },
@@ -129,7 +129,7 @@ export const data = [
       serving: '8°C',
       pairing: 'Aperitifs, after-dinner, sweet and sour dishes',
       certificates: [
-        'label_ecocert.svg'
+        'label_Ecocert.svg'
       ]
     }
   },
@@ -152,7 +152,7 @@ export const data = [
       serving: '15°C',
       pairing: 'Aperitifs, spicy dishes, braised beef or chocolate cake',
       certificates: [
-        'label_ecocert.svg'
+        'label_Ecocert.svg'
       ]
     }
   },
@@ -175,14 +175,14 @@ export const data = [
       serving: '12°C',
       pairing: 'Aperitifs, desserts',
       certificates: [
-        'label_ecocert.svg'
+        'label_Ecocert.svg'
       ]
     }
   },
   {
     page: 8,
     category: 'Contact',
-    background: 'contacte.jpg',
+    background: 'contact.jpg',
     contact: [
       {
         title: 'Office',
